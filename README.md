@@ -1,6 +1,6 @@
 # generator-dash-docset [![Build Status](https://secure.travis-ci.org/giladgray/generator-dash-docset.png?branch=master)](https://travis-ci.org/giladgray/generator-dash-docset)
 
-> [Yeoman](http://yeoman.io) generator
+> [Yeoman](http://yeoman.io) generator for [Dash](http://kapeli.com/dash) docset builders.
 
 
 ## Getting Started

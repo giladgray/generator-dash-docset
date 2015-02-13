@@ -1,0 +1,32 @@
+{
+  "name": "dash-asdf-docset",
+  "version": "0.1.0",
+  "description": "asdf docset for the excellent Dash documentation browser",
+  "main": "docset.coffee",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tar": "tar --exclude='.DS_Store' -cvzf asdf.tgz asdf.docset",
+    "dash": "./dash.sh"
+  },
+  "author": "???",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "~0.17.0",
+    "sequelize": "^2.0.0",
+    "sqlite3": "~3.0.2"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/???/dash-asdf-docset"
+  },
+  "keywords": [
+    "dash",
+    "docset",
+    "asdf",
+    "promise"
+  ],
+  "bugs": {
+    "url": "https://github.com/???/dash-asdf-docset/issues"
+  }
+}
