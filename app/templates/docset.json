@@ -1,10 +1,10 @@
 {
-    "name": "<%= apiName %>",
-    "version": "0.0.0",
-    "archive": "<%= name %>.tgz",
-    "author": {
-        "name": "???",
-        "link": "https://github.com/???"
-    },
-    "aliases": []
+  "name": "<%= apiName %>",
+  "version": "0.0.0",
+  "archive": "<%= name %>.tgz",
+  "author": {
+    "name": "<%= realName %>",
+    "link": "<%= githubUrl %>"
+  },
+  "aliases": []
 }

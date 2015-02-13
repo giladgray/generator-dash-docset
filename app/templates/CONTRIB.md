@@ -3,9 +3,9 @@
 
 > <%= apiName %> description
 
-Docset created by ???
+Docset created by <%= realName %> (<%= githubUrl %>, @<%= githubUser %>)
 
 ## Docset Generation
-https://github.com/???/dash-<%= name %>-docset for instructions.
+<%= githubUrl %>/<%= repoName %> for instructions.
 
 #### description ??

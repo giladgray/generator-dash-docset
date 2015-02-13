@@ -1,6 +1,6 @@
 # Dash <%= apiName %> Docset
 
-> [<%= apiName %>](https://github.com/petkaantonov/bluebird) docset for the excellent Dash documentation browser.
+> [<%= apiName %>](<%= website %>) docset for the excellent Dash documentation browser.
 
 <%= apiName %> is a fully featured promise library with focus on innovative features and performance. Its documentation is good and thorough but available only as a massive markdown file on GitHub. Not anymore!
 
