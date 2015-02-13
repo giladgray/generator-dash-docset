@@ -28,5 +28,7 @@
     "sequelize": "^2.0.0",
     "sqlite3": "~3.0.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "coffee-script": "^1.9.0"
+  }
 }

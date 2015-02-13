@@ -2,22 +2,25 @@ fs        = require 'fs'        # file loading
 cheerio   = require 'cheerio'   # html parsing
 Sequelize = require 'sequelize' # db building
 
+# docset project variables
 NAME = '<%= name %>.docset'
 PATH = "#{NAME}/Contents/Resources/Documents"
-URL = '<%= website %>'
+URL  = '<%= website %>'
 
 # HTML Guides, saved from http://handlebarsjs.com
 FILES = {
   'API' : 'api.html'
 }
 
-# type: {name: path, ...}
+# Docset sections, populated by header tags when a file is parsed
+# `{type: {name: path, ...}}`
 docset =
   Guide: {}
   Section: {}
   Function: {}
 
-# populate the given entry type with this element
+# Populate the given entry type with this element.
+# Returns an iterator function that can be passed directly to $().each.
 populateEntry = (file, type) -> ->
   $el   = $(@)
   title = $el.text().trim()
@@ -27,6 +30,7 @@ populateEntry = (file, type) -> ->
   # insert table of contents anchor before this element
   $el.before "<a name='//dash_ref/#{type}/#{title}/#{level}' class='dashAnchor'></a>\n"
 
+# Parse each file and populate docset object.
 for title, file of FILES
   $ = cheerio.load fs.readFileSync("html/#{file}")
   # discover docset entries
@@ -43,12 +47,12 @@ console.log 'Docset Configuration:'
 console.log docset
 console.log '\n'
 
-# create the database!
+# Create the database!
 db = new Sequelize 'database', 'username', 'password',
   dialect: 'sqlite'
   storage: "#{NAME}/Contents/Resources/docSet.dsidx"
 
-# create the SearchIndex table, per http://kapeli.com/docsets
+# Create the SearchIndex table, per http://kapeli.com/docsets
 SearchIndex = db.define 'searchIndex',
   id:
     type: Sequelize.INTEGER
@@ -61,9 +65,10 @@ SearchIndex = db.define 'searchIndex',
   freezeTableName: true
   timestamps: false
 
-# recreate the table and populate it from docset object
+# Recreate the table and populate it from docset object
 db.sync(force: true)
   .complete ->
     for type, data of docset
       for name, path of data
         SearchIndex.create {name, type, path}
+        # id is auto-incremented because it is primary key

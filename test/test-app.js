@@ -1,4 +1,5 @@
 'use strict';
+/* global describe, before, it */
 
 var path = require('path');
 var assert = require('yeoman-generator').assert;
@@ -11,17 +12,26 @@ describe('dash-docset:app', function () {
       .inDir(path.join(os.tmpdir(), './temp-test'))
       .withOptions({ 'skip-install': true })
       .withPrompt({
-        someOption: true
+        githubUser: 'giladgray',
+        apiName: 'Testacular Docset',
+        website: 'http://testacular.com'
       })
       .on('end', done);
   });
 
   it('creates files', function () {
     assert.file([
-      'bower.json',
-      'package.json',
       '.editorconfig',
-      '.jshintrc'
+      '.gitignore',
+      'CONTRIB.md',
+      'LICENSE',
+      'README.md',
+      'dash.sh',
+      'docset.coffee',
+      'docset.json',
+      'package.json',
+      'html/',
+      'testacular-docset.docset/'
     ]);
   });
 });
